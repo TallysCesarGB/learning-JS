@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="creatCar" class="creatCar">
+      <div class="fieldForm">
+        <label>Name </label>
+        <input
+          type="text"
+          name="f-name"
+          id="f-name"
+          placeholder="Normal"
+          value=""
+        />
+      </div>
+      <div class="fieldForm">
+        <label>Dor </label>
+        <input type="text" name="f-dor" id="f-dor" placeholder="4" value="" />
+      </div>
+      <div class="fieldForm">
+        <label>Shielding </label>
+        <input
+          type="text"
+          name="f-shielding"
+          id="f-shielding"
+          disabled
+          placeholder="0"
+          value=""
+        />
+      </div>
+      <div class="fieldForm">
+        <label>Ammunition </label>
+        <input
+          type="text"
+          name="f-ammunition"
+          id="f-ammunition"
+          disabled
+          placeholder="0"
+          value=""
+        />
+      </div>
+    </div>
+    <div class="fieldForm">
+      <label for="">Type</label>
+      <div class="radio">
+        <input type="radio" name="f-type" id="f-typeArmy" value="a" />Army
+      </div>
+      <div class="radio">
+        <input
+          type="radio"
+          name="f-type"
+          id="f-typeNormal"
+          value="n"
+          checked
+        />Normal
+      </div>
+      <div class="fieldForm">
+        <button id="add-car"><p>Add</p></button>
+      </div>
+    </div>
+    <div class="cars"></div>
+    <script src="inheritance.js"></script>
+  </body>
+</html>
