@@ -53,7 +53,9 @@ buttonAdd.addEventListener("click", () => {
     );
     arrCars.push(c);
   }
-  console.log(arrCars);
+  showCars();
+  placeholderNormal.value = "";
+  placeholderDor.value = "";
 });
 
 class Car {
