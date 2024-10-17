@@ -1,0 +1,51 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 900
+
+.orbitron-<uniquifier > {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+* {
+  margin: 0;
+  padding: 0%;
+  border: none;
+  box-sizing: border-box;
+  font-size: larger;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  width: 72%;
+  height: 40%;
+  border-radius: 24px;
+}
+
+.hour {
+  color: green;
+  font-weight: 1000;
+  font-family: "Orbitron", sans-serif;
+  font-size: 7rem;
+}
+
+.date {
+  color: green;
+  font-weight: 1000;
+  font-family: "Orbitron", sans-serif;
+  font-size: 4rem;
+}
