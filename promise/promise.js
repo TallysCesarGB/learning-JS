@@ -1,31 +1,40 @@
 const number = document.querySelector(".number");
+const btnPromise = document.querySelector("#promise");
 
-const quant = Math.floor(Math.random() * 10);
-console.log(quant);
+let quant = 0;
 
-const myPromise = new Promise((even, odd) => {
-  const condition = quant % 2 == 0 ? true : false;
-  const time = 3000;
+btnPromise.addEventListener("click", (evt) => {
+  number.innerHTML = "Loading...";
+  quant = Math.floor(Math.random() * 10);
+  promise(quant)
+    .then((result) => {
+      number.innerHTML = result;
+      number.classList.remove("odd");
+      number.classList.add("even");
+    })
 
-  setTimeout(() => {
-    if (condition) {
-      even("Vai da bom...");
-    } else {
-      odd("Xiiiiii....");
-    }
-  }, time);
+    .catch((result) => {
+      number.innerHTML = result;
+      number.classList.remove("even");
+      number.classList.add("odd");
+    });
 });
 
-myPromise.then((result) => {
-  number.innerHTML = result;
-  number.classList.remove("odd");
-  number.classList.add("even");
-});
+const promise = (quant) => {
+  console.log(quant);
+  const myPromise = new Promise((even, odd) => {
+    const condition = quant % 2 == 0 ? true : false;
+    const time = 3000;
 
-myPromise.catch((result) => {
-  number.innerHTML = result;
-  number.classList.remove("even");
-  number.classList.add("odd");
-});
+    setTimeout(() => {
+      if (condition) {
+        even("Vai da bom...");
+      } else {
+        odd("Xiiiiii....");
+      }
+    }, time);
+  });
+  return myPromise;
+};
 
-number.innerHTML = "Loading...";
+number.innerHTML = "Waiting...";
