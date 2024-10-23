@@ -2,6 +2,7 @@ import contacts from "./contacts.js";
 
 const save = document.querySelector("#save");
 const contactList = document.querySelector("#contatList");
+const clear = [...document.getElementsByTagName("input")];
 
 save.addEventListener("click", (evt) => {
   const contact = {
@@ -11,4 +12,7 @@ save.addEventListener("click", (evt) => {
   };
   contacts.addContact(contact, contactList);
   console.log(contacts.getAllContacts());
+  clear.map((field) => {
+    field.value = "";
+  });
 });
