@@ -1,0 +1,29 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  border: none;
+  box-sizing: border-box;
+}
+
+.panel {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+}
+
+button {
+  width: 150px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  background-color: #ccc;
+}
+
+.car {
+  background-color: #f00;
+  height: 40px;
+}
