@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="mainChart">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+      const ctx = document.getElementById("myChart");
+      const endpoint = "http://localhost:3000/data"; //
+
+      function createObject() {
+        return {
+          volume: Math.floor(Math.random() * 10) + 1,
+          temperature: Math.floor(Math.random() * 10) + 1,
+          pressure: Math.floor(Math.random() * 10) + 1,
+        };
+      }
+
+      function writeFile() {
+        const data = createObject();
+
+        fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("Dados enviados com sucesso:", result);
+          })
+          .catch((error) => {
+            console.error("Erro ao enviar dados:", error);
+          });
+      }
+
+      function updateChart() {
+        fetch(endpoint)
+          .then((response) => response.json())
+          .then((jsonData) => {
+            const volumeData = jsonData.map((item) => item.volume);
+            const temperatureData = jsonData.map((item) => item.temperature);
+            const pressureData = jsonData.map((item) => item.pressure);
+
+            myChart.data.datasets[0].data = [
+              volumeData[volumeData.length - 1],
+              temperatureData[temperatureData.length - 1],
+              pressureData[pressureData.length - 1],
+            ];
+            myChart.update();
+          })
+          .catch((error) => {
+            console.error("Erro ao obter dados:", error);
+          });
+      }
+
+      const myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Volume", "Temperature", "Pressure"],
+          datasets: [
+            {
+              label: "# Dados",
+              data: [],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      setInterval(() => {
+        writeFile();
+        updateChart();
+      }, 3000);
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
