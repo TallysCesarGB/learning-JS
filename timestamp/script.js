@@ -1,6 +1,10 @@
 const timer = document.querySelector("#timer");
+const start = document.querySelector("#start-button");
+const pause = document.querySelector("#pause-button");
+const reset = document.querySelector("#reset-button");
 
-const timerInitial = Date.now();
+let timerInitial = null;
+let interval = null;
 
 const counter = () => {
   let currentTime = Math.floor((Date.now() - timerInitial) / 1000);
@@ -29,4 +33,16 @@ const counter = () => {
   return currentTime;
 };
 
-setInterval(counter, 1000);
+start.addEventListener("click", () => {
+  timerInitial = Date.now();
+  interval = setInterval(counter, 1000);
+});
+
+pause.addEventListener("click", () => {
+  clearInterval(interval);
+});
+
+reset.addEventListener("click", () => {
+  timerInitial = Date.now();
+  timer.textContent = "00:00:00";
+});
